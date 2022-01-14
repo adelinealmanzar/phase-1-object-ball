@@ -1,7 +1,7 @@
 function gameObject() {
     const game = {
         home: {
-            teamName: 'BrooklynNets',
+            teamName: 'Brooklyn Nets',
             colors: ['Black', 'White'],
             players: {
                 'Alan Anderson': {
@@ -114,6 +114,73 @@ function gameObject() {
         }
     };
     return game;
-
 }
-console.log(gameObject());
+
+const object = gameObject()
+function parametersOfObject() {
+    return object.away.players;
+}
+
+function playerStats(playerName) {
+    const homeTeamPlayer = object.home.players[playerName];
+    const awayTeamPlayer = object.away.players[playerName];
+    homeTeamPlayer ? homeTeamPlayer : awayTeamPlayer; //ternary if homeTeamPlayer exists/is truthy, then return homeTeamPlayer, else return awayTeamPlayer
+}
+
+function numPointsScore(playerName) {
+    const foundPlayer = playerStats(playerName);
+    return foundPlayer.points;
+}
+
+function shoeSize(playerName) {
+    const foundPlayer = playerStats(playerName);
+    return foundPlayer.shoe;
+}
+
+// function teamNames() {
+//     const teamNamesArr = [];
+//     teamNamesArr.push(object.home.teamName)
+//     teamNamesArr.push(object.away.teamName)
+//     return teamNamesArr;
+// }
+
+const teamNames = () => {
+    const teamNameArray = [];
+    for (const property in object) {
+        console.log(object[property].teamName);
+        teamNameArray.push(object[property].teamName);
+    }
+    return teamNameArray;
+}
+
+function teamColors(namePar) {
+    if (namePar === object.home.teamName) {
+        return object.home.colors
+    } else {
+        return object.away.colors
+    }
+}
+
+function playerNumbers() {
+    for (let property in object) {
+        // console.log(object[property]);
+        if(object[property].teamName === teamName) {
+            const arrayOfPlayerObjects = Object.values(object[property].players);
+            return arrayOfPlayerObjects.map(playerObject => playerObject.number);
+        }
+    }
+}
+
+function findPlayerLargestShoe() {
+    const homeTeamPlayers = Object.values(object.home.players);
+    const awayTeamPlayers = Object.values(object.away.players);
+    const allPlayers = [...homeTeamPlayers, ...awayTeamPlayers];
+    //could also do
+    // const allPlayers = homeTeamPlayers.concat(awayTeamPlayers);
+    return allPlayers;
+}
+
+function bigShoeRebound() {
+    const foundPlayer = findPlayerLargestShoe();
+    return foundPlayer.rebounds;
+}
