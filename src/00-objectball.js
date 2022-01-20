@@ -126,7 +126,7 @@ function playerStats(playerName) {
     const awayTeamPlayer = object.away.players[playerName];
     homeTeamPlayer ? homeTeamPlayer : awayTeamPlayer; //ternary if homeTeamPlayer exists/is truthy, then return homeTeamPlayer, else return awayTeamPlayer
 }
-
+//not working
 function numPointsScore(playerName) {
     const foundPlayer = playerStats(playerName);
     return foundPlayer.points;
@@ -136,13 +136,6 @@ function shoeSize(playerName) {
     const foundPlayer = playerStats(playerName);
     return foundPlayer.shoe;
 }
-
-// function teamNames() {
-//     const teamNamesArr = [];
-//     teamNamesArr.push(object.home.teamName)
-//     teamNamesArr.push(object.away.teamName)
-//     return teamNamesArr;
-// }
 
 const teamNames = () => {
     const teamNameArray = [];
